@@ -3,19 +3,19 @@
 import sys
 
 number = sys.argv
-if len(number) != 2:
+if len(sys.argv) > 2 or len(sys.argv) < 2:
     print(f"Usage: nqueens N")
     exit(1)
 
-if not number[1].isdigit():
+if not sys.argv[1].isdigit():
     print("N must be a number")
     exit(1)
 
-if int(number[1]) < 4:
+if int(sys.argv[1]) < 4:
     print("N must be at least 4")
     exit(1)
 
-k = int(number[1])
+k = int(sys.argv[1])
 
 
 def queens(k, i=0, a=[], b=[], c=[]):
