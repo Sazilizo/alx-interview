@@ -7,7 +7,7 @@ def makeChange(coins, total):
     if total <= 0:
         return (0)
 
-    #sort coins
+    """sort coins"""
     coins = sorted(coins)[::-1]
     change = 0
     for coin in coins:
