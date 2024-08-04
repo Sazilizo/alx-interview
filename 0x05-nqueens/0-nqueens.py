@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""N queens"""
+""" The N queens puzzle is the challenge of placing N non-attacking queens on an N×N chessboard. Write a program that solves the N queens problem."""
 import sys
 
-number = sys.argv
+
 if len(sys.argv) > 2 or len(sys.argv) < 2:
-    print(f"Usage: nqueens N")
+    print("Usage: nqueens N")
     exit(1)
 
 if not sys.argv[1].isdigit():
@@ -15,29 +15,30 @@ if int(sys.argv[1]) < 4:
     print("N must be at least 4")
     exit(1)
 
-k = int(sys.argv[1])
+n = int(sys.argv[1])
 
 
-def queens(k, i=0, a=[], b=[], c=[]):
-    """discovering all possible positions"""
-    if i < k:
-        for j in range(k):
+def queens(n, i=0, a=[], b=[], c=[]):
+    """ find possible positions """
+    if i < n:
+        for j in range(n):
             if j not in a and i + j not in b and i - j not in c:
-                yield from queens(k, i + 1, a + [j], b + [i + j], c + [i - j])
+                yield from queens(n, i + 1, a + [j], b + [i + j], c + [i - j])
     else:
         yield a
 
 
-def NQueens(k):
-    """a final solution"""
-    buffer = []
-    c = 0
-    for n in queens(k, 0):
-        for i in n:
-            buffer.append([c, i])
-            c += 1
-        print(buffer)
-        buffer = []
-        c = 0
+def solve(n):
+    """ solve """
+    k = []
+    i = 0
+    for solution in queens(n, 0):
+        for s in solution:
+            k.append([i, s])
+            i += 1
+        print(k)
+        k = []
+        i = 0
 
-NQueens(k)
+
+solve(n)
