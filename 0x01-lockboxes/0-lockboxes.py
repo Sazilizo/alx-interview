@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''Working on the Lockboxes Challenge'''
 
+
 def canUnlockAll(boxes):
     '''checks if all the box will be opened and opens them
     Returns:
